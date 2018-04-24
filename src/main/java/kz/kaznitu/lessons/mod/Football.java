@@ -1,6 +1,7 @@
 package kz.kaznitu.lessons.mod;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @Entity
@@ -10,7 +11,10 @@ public class Football {
     private int id;
     private String firstName;
     private String lastName;
+
+    @Pattern(regexp = "[a-zA-Z]{1}[a-zA-Z\\d\\u002E\\u005F]+@([a-zA-Z]+\\u002E){1,2}((net)|(com)|(org)|(kz))",message = "Error email")
     private String email;
+
     @ManyToMany
     private List<Club> clubs;
 

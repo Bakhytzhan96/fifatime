@@ -25,7 +25,7 @@ public class Club{
     @NotNull
     @Size(min = 3,max = 50, message = "Error")
 //    @Email
-    @Pattern(regexp = "[a-zA-Z]{1}[a-zA-Z\\d\\u002E\\u005F]+@([a-zA-Z]+\\u002E){1,2}((net)|(com)|(org))",message = "Error email")
+    @Pattern(regexp = "[a-zA-Z]{1}[a-zA-Z\\d\\u002E\\u005F]+@([a-zA-Z]+\\u002E){1,2}((net)|(com)|(org)|(kz))",message = "Error email")
     private String email;
 
     public Club(){
