@@ -7,9 +7,11 @@ import kz.kaznitu.lessons.repas.FootballRepas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import javax.management.MalformedObjectNameException;
 import javax.management.modelmbean.ModelMBeanOperationInfo;
+import javax.validation.Valid;
 
 @Controller
 public class FootballController {
@@ -33,7 +35,7 @@ public class FootballController {
 
     @RequestMapping(value = "/footballs", method = RequestMethod.POST)
     public String footballsAdd(@RequestParam String email,
-                                @RequestParam String firstName, @RequestParam String lastName, Model model) {
+                               @RequestParam String firstName, @RequestParam String lastName, Model model) {
         Football newFootball= new Football();
         newFootball.setEmail(email);
         newFootball.setFirstName(firstName);
@@ -69,7 +71,10 @@ public class FootballController {
         return "clubs";
     }
     @RequestMapping(value = "/clubs" , method = RequestMethod.POST)
-    public String clubsAdd(@ModelAttribute Club club){
+    public String clubsAdd(@ModelAttribute("club") @Valid Club club, BindingResult result){
+        if (result.hasErrors()){
+            return "clubs";
+        }
         clubRepas.save(club);
         return "redirect:/footballs";
     }

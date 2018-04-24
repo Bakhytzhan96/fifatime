@@ -1,39 +1,49 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Football Club's</title>
+    <title>Club</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
     <link rel="stylesheet" href="/bootstrap.min.css" media="screen"/>
+    <link rel="Icon"  type="img/icon" href="images/UEFA-Champions-League.jpg"/>
+    <link rel="Icon"  type="img/icon" href="images/uefa-2018.jpg"/>
     <style>
         #h1{color:#28a745;size: 24px;}
-        body{
-            background: #a7b1f9;
-        }
-        footer{
-            position: absolute;
-            background:#a7b1f9;
-            color: #343a40;
-            width: 10%;
-            font-style:italic;
-            text-align:right;
-        }
+        body{background: #a7b1f9;}
+        /*footer{ position: absolute; background:#a7b1f9; color: #343a40; width: 10%; font-style:italic; text-align:right;}*/
+        .header{position: absolute; margin-top: 10px; width: 500px; right: 150px;}
+        .header1{position: absolute; margin-top: 550px; margin-bottom: 15px; width: 500px; right: 50px;}
+        .container{position: absolute; left: 0px; margin-top: 30px; width: 300px;}
     </style>
 </head>
+<div align="left" class="header1">
+    <img src="images/uefa-2018.jpg" alt="uefa-2018" height="300px" width="420px">
+</div>
+<div align="right" class="header">
+    <img src="images/UEFA-Champions-League.jpg" alt="uefa" height="400px" width="620px"/>
+
+    <br><p>Uefa Champions League-ға Қазақстан атынан соңғы жылдары "Астана", "Қайрат" командалары өнер көрсетіп жүр.
+    <br>Бұл екі команда ішінде айтарлықтай жақсы өнер көрсеткен "Астана" командасы бар,<br>
+    "Астана" 1/8 раундына шығып азулы Еуропа командалары мен бәсекеге түсті.</p>
+</div>
+
 <body>
 
 <div class="container">
     <div class="row justify-content-center">
         <div class="form-group">
-            <h1 id="h1">Football Club's</h1>
+            <h1 id="h1">Club</h1>
             <form action="#" th:action="@{/clubs/}" th:object="${club}" method="POST">
-                <label for="label">FC Name</label>
-                <input type="text" id="label" name="label" th:field="*{label}"
-                       class="form-control" placeholder="Name енгізіңіз" />
 
-                <label for="description">International</label>
-                <input type="text" id="description" name="description" th:field="*{description}"
-                       class="form-control" placeholder="Club Name сипаттаңыз" />
+                <label th:for="label">Name Club</label>
+                <input th:field="*{label}" class="form-control"/>
+                <span th:errors="*{label}" class="text-danger"></span>
+                International<label th:for="description"></label>
+                <input th:field="*{description}" class="form-control"/>
+                <span th:errors="*{description}" class="text-danger"></span>
+                Email        <label th:for="email"></label>
+                <input th:field="*{email}" class="form-control"/>
+                <span th:errors="*{email}" class="text-danger"></span>
 
                 <br/>
                 <button type="submit" class="btn btn-primary">Save</button>
@@ -44,7 +54,7 @@
 </div>
 
 <footer>
-    &copy;ABS 2018 Football
+    &copy;ABS 2018
 </footer>
 
 </body>

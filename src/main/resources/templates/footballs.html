@@ -31,17 +31,19 @@
                     <tr>
                         <th>Name</th>
                         <th>Club</th>
+                        <th>Email</th>
                         <th>View</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="football : ${footballs}">
-                        <td th:text="${football.firstName + ' ' + football.lastName}"></td>
+                        <td th:text="${football.firstName +' '+ football.lastName}"></td>
                         <td>
                             <span th:each="club,iterStat : ${football.clubs}">
                                 <span th:text="${club.label}" /><th:block th:if="${!iterStat.last}">,</th:block>
                             </span>
                         </td>
+                        <td> <a th:href = "@{/football/{email}(email=${football.id})}">email</a> </td>
                         <td> <a th:href = "@{/football/{id}(id=${football.id})}">view</a> </td>&#9731;
                     </tr>
                     </tbody>
